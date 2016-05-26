@@ -12,6 +12,9 @@ public class Country {
         this.fullName = fullName;
     }
 
+    public Country() {
+    }
+
     public String getAbbreviation() {
         return abbreviation;
     }
@@ -28,5 +31,8 @@ public class Country {
         this.fullName = fullName;
     }
 
-
+    @Override
+    public String toString() {
+        return fullName;
+    }
 }
