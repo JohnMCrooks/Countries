@@ -3,13 +3,15 @@ package com.crooks;
 import javax.swing.text.html.parser.Parser;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
       // ArrayList<Country> cArray = new ArrayList<Country>();
 
@@ -31,6 +33,16 @@ public class Main {
         }
 
         System.out.println("Pick a Letter to Recieve a country List");
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+        String fileName = userInput + "_countries.txt";
+        ArrayList<Country> fileText = countryHash.get(userInput);
+        File outPut = new File(fileName);
+
+        FileWriter fw = new FileWriter(outPut);
+        fw.write(fileText.toString());
+        fw.close();
 
     }
+
 }
