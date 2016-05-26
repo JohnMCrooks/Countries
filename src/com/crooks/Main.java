@@ -32,6 +32,10 @@ public class Main {
             countryHash.get(letter).add(country);
         }
 
+        //TODO Sanitize user input
+        //TODO Add Json export
+        //TODO Refactor main method
+
         System.out.println("Pick a Letter to Recieve a country List");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
