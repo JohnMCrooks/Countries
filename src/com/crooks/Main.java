@@ -31,15 +31,14 @@ public class Main {
     }
 
     public static String userInput(){
-        System.out.println("Pick a Letter to Receive a List of countries that begin with said letter:\n");
+        System.out.println("Pick a lowercase Letter to Receive a List of countries that begin with said letter:\n");
         Scanner scanner = new Scanner(System.in);
         String userinput = scanner.nextLine();
 
         //Sanitizing user input - Checking for size and character type.
-        char charvar = userinput.charAt(0);
-        int unicode = charvar;
-        System.out.println(unicode +": unicode results");
-        if (unicode < 65 || unicode > 90){
+
+
+        if (!userinput.matches("[a-zA-Z]+")){
             System.out.println("You need to use only regular letters");
             userInput();
         }
