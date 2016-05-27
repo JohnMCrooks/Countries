@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class Main {
 
+
+
     public static void main(String[] args) throws IOException {
 
       // ArrayList<Country> cArray = new ArrayList<Country>();
@@ -19,7 +21,28 @@ public class Main {
         File f = new File("countries.txt");
         Scanner fileScanner = new Scanner(f);
 
+        parseFile(countryHash, fileScanner);
+        exportFile(countryHash);
 
+        //TODO Sanitize user input
+        //TODO Add Json export
+
+    }
+
+    public static void exportFile(HashMap<String, ArrayList<Country>> countryHash) throws IOException {
+        System.out.println("Pick a Letter to Receive a List of countries that begin with said letter:\n");
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+        String fileName = userInput + "_countries.txt";
+        ArrayList<Country> fileText = countryHash.get(userInput);
+        File outPut = new File(fileName);
+        FileWriter fw = new FileWriter(outPut);
+        fw.write(fileText.toString());
+        fw.close();
+
+    }
+
+    public static void parseFile(HashMap<String, ArrayList<Country>> countryHash, Scanner fileScanner){
         while (fileScanner.hasNext()) {            //while (there is more to read...)
             String line = fileScanner.nextLine(); // read line from file and set it to a variable
             String[] columns = line.split("\\|"); // Take the variable and split it's contents based on the delimiter "|" into a new array
@@ -31,22 +54,6 @@ public class Main {
             }
             countryHash.get(letter).add(country);
         }
-
-        //TODO Sanitize user input
-        //TODO Add Json export
-        //TODO Refactor main method
-
-        System.out.println("Pick a Letter to Recieve a country List");
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
-        String fileName = userInput + "_countries.txt";
-        ArrayList<Country> fileText = countryHash.get(userInput);
-        File outPut = new File(fileName);
-
-        FileWriter fw = new FileWriter(outPut);
-        fw.write(fileText.toString());
-        fw.close();
-
     }
 
 }
