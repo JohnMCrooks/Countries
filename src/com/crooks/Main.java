@@ -25,11 +25,8 @@ public class Main {
 
         String userInput = userInput();
 
-
         exportFile(countryHash, userInput);
         exportJson(countryHash, userInput);
-
-        //TODO Sanitize user input
 
     }
 
@@ -38,17 +35,18 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String userinput = scanner.nextLine();
 
-
+        //Sanitizing user input - Checking for size and character type.
+        char charvar = userinput.charAt(0);
+        int unicode = charvar;
+        System.out.println(unicode +": unicode results");
+        if (unicode < 65 || unicode > 90){
+            System.out.println("You need to use only regular letters");
+            userInput();
+        }
         if (userinput.length() !=1) {
             System.out.println("Please enter a single character only.");
             userInput();
         }
-        //TODO take character to unicode, find if it falls within the alphabet numeric range, return a message appropriately
-        ArrayList<String> invalidChar = new ArrayList<>();
-        /* Fix on return from Lunch!!!!!     if (userinput.contains()){
-            System.out.println("holy shit what are you doing!");
-        }*/
-
 
         return userinput;
 
