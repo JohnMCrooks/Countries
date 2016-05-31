@@ -1,7 +1,5 @@
 package com.crooks;
 
-import com.sun.org.apache.regexp.internal.CharacterArrayCharacterIterator;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import jodd.json.JsonSerializer;
 
 import javax.swing.text.html.parser.Parser;
@@ -35,8 +33,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String userinput = scanner.nextLine();
 
-        //Sanitizing user input - Checking for size and character type.
-
+        //Validating user input - Checking for size and character type.
 
         if (!userinput.matches("[a-zA-Z]+")){
             System.out.println("You need to use only regular letters");
